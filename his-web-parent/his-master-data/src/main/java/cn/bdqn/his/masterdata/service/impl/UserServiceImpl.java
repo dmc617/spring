@@ -1,4 +1,4 @@
-package cn.bdqn.his.masterdata.service;
+package cn.bdqn.his.masterdata.service.impl;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;

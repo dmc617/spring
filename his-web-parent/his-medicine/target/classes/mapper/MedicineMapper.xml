@@ -14,13 +14,13 @@
         his_medicine.sale_price,
         his_medicine.factory
     </sql>
-    <select id="findAll" resultType="Medicine">
+    <select id="findAll" resultType="cn.bdqn.his.medicine.entity.Medicine">
         SELECT
         <include refid="baseColumns"/>
         FROM
         his_medicine
     </select>
-    <select id="findAllBy" resultType="Medicine">
+    <select id="findAllBy" resultType="cn.bdqn.his.medicine.entity.Medicine">
         SELECT
             <include refid="baseColumns"/>
             FROM

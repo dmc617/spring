@@ -1,5 +1,8 @@
 package cn.bdqn.his.medicine.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
@@ -10,7 +13,9 @@ import lombok.ToString;
 @Data
 @Builder
 @ToString
+@TableName(value = "medicine")
 public class Medicine {
+    @TableId(value = "id",type = IdType.AUTO)
     private Long id;
     private String typeId;
     private String code;
