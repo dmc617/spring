@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.his.masterdata.mapper.CheckitemMapper">
+  <resultMap id="BaseResultMap" type="cn.bdqn.his.masterdata.entity.Checkitem">
+    <!--@mbg.generated-->
+    <!--@Table checkitem-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="typeId" jdbcType="INTEGER" property="typeid" />
+    <result column="invoiceProjectId" jdbcType="INTEGER" property="invoiceprojectid" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="cost" jdbcType="DOUBLE" property="cost" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, code, `name`, typeId, invoiceProjectId, price, cost, unit, `status`, createTime
+  </sql>
+  <select id="find" resultType="cn.bdqn.his.masterdata.entity.Checkitem">
+    SELECT c.*,t.`typeName` typeName,p.`name` invoiceName FROM checkItem c
+    INNER JOIN itemType t ON t.`id` = c.`typeId`
+    INNER JOIN invoiceProject p ON p.`id` = c.`invoiceProjectId`
+    <where>
+      <if test="status!=null ">
+        and c.status = #{status}
+      </if>
+      <if test="name!=null ">
+        and c.code like concat('%',#{name},'%') or c.name like concat('%',#{name},'%')
+      </if>
+    </where>
+  </select>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.his.prescription.mapper.PInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.bdqn.his.prescription.entity.PInfo">
+    <!--@mbg.generated-->
+    <!--@Table p_info-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="tempCode" jdbcType="VARCHAR" property="tempcode" />
+    <result column="group" jdbcType="INTEGER" property="group" />
+    <result column="medicineId" jdbcType="INTEGER" property="medicineid" />
+    <result column="perCount" jdbcType="VARCHAR" property="percount" />
+    <result column="ways" jdbcType="VARCHAR" property="ways" />
+    <result column="frequency" jdbcType="VARCHAR" property="frequency" />
+    <result column="days" jdbcType="VARCHAR" property="days" />
+    <result column="allCount" jdbcType="VARCHAR" property="allcount" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="medicineName" jdbcType="VARCHAR" property="medicineName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, tempCode, `group`, medicineId, perCount, ways, frequency, `days`, allCount, price
+  </sql>
+    <select id="selectByCode" resultMap="BaseResultMap">
+        SELECT p.*,m.`name` medicineName FROM his_prescription.p_info p
+        INNER JOIN his_medicine.`medicine` m
+        ON m.`id` = p.`medicineId`
+        WHERE p.tempCode = #{code}
+    </select>
+</mapper>
