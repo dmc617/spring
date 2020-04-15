@@ -19,4 +19,14 @@ public class TbDoctoradviceServiceImpl extends ServiceImpl<TbDoctoradviceMapper,
     public List<TbDoctoradvice> getAll() {
         return doctoradviceMapper.selectList(null);
     }
+
+    @Override
+    public boolean save(TbDoctoradvice entity) {
+        int insert = doctoradviceMapper.insert(entity);
+        if (insert>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

@@ -2,6 +2,8 @@ package cn.bdqn.his.masterdata.controller;
 
 import cn.bdqn.his.common.response.Response;
 import cn.bdqn.his.common.response.ResponseEnum;
+import cn.bdqn.his.masterdata.entity.TbDoctoradvice;
+import cn.bdqn.his.masterdata.entity.TbIllness;
 import cn.bdqn.his.masterdata.service.impl.CheckitemServiceImpl;
 import cn.bdqn.his.masterdata.service.impl.PatientInfoServiceImpl;
 import cn.bdqn.his.masterdata.service.impl.TbDoctoradviceServiceImpl;
@@ -26,6 +28,7 @@ public class MasterController {
     @Autowired
     PatientInfoServiceImpl patientInfoService;
 
+    
     @GetMapping("/getIllness")
     public Response getIllness(){
         return new Response(ResponseEnum.SUCCESS).setResponseBody(illnessService.getAll());
@@ -44,5 +47,15 @@ public class MasterController {
     @GetMapping("/getPatient")
     public Response getPatient(String name){
         return new Response(ResponseEnum.SUCCESS).setResponseBody(patientInfoService.findByName(name));
+    }
+
+    @GetMapping("/saveIllness")
+    public Response saveIllness(TbIllness illness){
+        return new Response(ResponseEnum.SUCCESS).setResponseBody(illnessService.save(illness));
+    }
+
+    @GetMapping("/saveDoctorAdvice")
+    public Response saveDoctorAdvice(TbDoctoradvice doctorAdvice){
+        return new Response(ResponseEnum.SUCCESS).setResponseBody(doctorAdviceService.save(doctorAdvice));
     }
 }

@@ -9,4 +9,5 @@ import java.util.List;
 public interface TbDoctoradviceService extends IService<TbDoctoradvice>{
 
     List<TbDoctoradvice> getAll();
+
 }

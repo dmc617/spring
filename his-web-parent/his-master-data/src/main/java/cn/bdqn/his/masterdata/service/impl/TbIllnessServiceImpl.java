@@ -1,5 +1,6 @@
 package cn.bdqn.his.masterdata.service.impl;
 
+import cn.bdqn.his.masterdata.entity.TbDoctoradvice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
@@ -17,5 +18,15 @@ public class TbIllnessServiceImpl extends ServiceImpl<TbIllnessMapper, TbIllness
     @Override
     public List<TbIllness> getAll() {
         return illnessMapper.selectList(null);
+    }
+
+    @Override
+    public boolean save(TbIllness entity) {
+        int insert = illnessMapper.insert(entity);
+        if (insert>0){
+            return true;
+        }else {
+            return false;
+        }
     }
 }
